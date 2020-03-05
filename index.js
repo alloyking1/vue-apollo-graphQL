@@ -13,13 +13,6 @@ const typeDefs = gql`
     description: String
   }
 
-
-  # mutations are used to add data to the data set 
-  type Mutation {
-
-  }
-
-
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each. In this
   # case, the "books" query returns an array of zero or more Books (defined above).
@@ -27,33 +20,35 @@ const typeDefs = gql`
   type Query {
     books: [Book]
   }
-`;
 
-const books = [
-    {
-      title: 'Harry Potter and the Chamber of Secrets',
-      author: 'J.K. Rowling',
-      description: 'testing shit'
-    },
-    {
-      title: 'Jurassic Park',
-      author: 'Michael Crichton',
-      description: 'Shit is getting real'
-    },
-    {
-        title: 'test book',
-        author: 'Moses west',
-        description: 'This is a demo graphQL project'
-    }
-];
+
+`;
 
 // Resolvers define the technique for fetching the types defined in the
 // schema. This resolver retrieves books from the "books" array above.
 const resolvers = {
-    Query: {
-      books: () => books,
-    },
+  Query: {
+    books: () => books,
+  },
 };
+
+const books = [
+  {
+    title: 'Harry Potter and the Chamber of Secrets',
+    author: 'J.K. Rowling',
+    description: 'testing shit'
+  },
+  {
+    title: 'Jurassic Park',
+    author: 'Michael Crichton',
+    description: 'Shit is getting real'
+  },
+  {
+      title: 'test book',
+      author: 'Moses west',
+      description: 'This is a demo graphQL project'
+  }
+];
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
